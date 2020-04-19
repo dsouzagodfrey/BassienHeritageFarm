@@ -1,0 +1,45 @@
+Option Compare Database
+
+Private Sub BillingPeriod_Click()
+BilingMaster_ID.Value = BillingPeriod.Value
+End Sub
+
+
+Private Sub Command32_Click()
+BillingPeriod.Requery
+
+'SELECT [BillingMaster].[BillingMaster_ID], [BillingMaster].[BillingPeriod] FROM BillingMaster;
+End Sub
+
+Private Sub Command33_Click()
+CustomerFullName.Requery
+End Sub
+
+Private Sub CustomerFullName_Click()
+Customer_Id.Value = CustomerFullName.Value
+End Sub
+
+
+INSERT INTO DeliveryDetails ( DeliveryShortName, CustomerFullName, DeliveryDate, [Delivered by] )
+SELECT DeliveryDetails.[DeliveryShortName], DeliveryDetails.[CustomerFullName], DeliveryDetails.[DeliveryDate], DeliveryDetails.[Delivered by]
+FROM DeliveryDetails;
+
+
+SELECT 
+DeliveryDetails.[DeliveryDetails_Id],
+DeliveryDetails.[DeliveryMaster_Id],
+DeliveryDetails.[DeliveryShortName], 
+DeliveryDetails.[Cutomer_id],
+DeliveryDetails.[CustomerFullName], 
+DeliveryDetails.[DeliveryDate_Id],
+DeliveryDetails.[DeliveryDate], 
+DeliveryDetails.[Delivered by]
+FROM DeliveryDetails;
+
+
+SELECT Customers.CustomerFullName, Customers.CustomerDeliveryAddress, BillingDetails.BillDueOn, BillingDetails.BilledAmount, PaymentDetails.PaymentDate, PaymentDetails.PaidAmount, (BillingDetails.BilledAmount - PaymentDetails.PaidAmount ) AS AmountDue
+FROM (Customers INNER JOIN BillingDetails ON Customers.Customer_Id = BillingDetails.Customer_Id) LEFT JOIN PaymentDetails ON Customers.Customer_Id = PaymentDetails.Customer_Id;
+
+FROM (Customers 
+Customer_Id
+
