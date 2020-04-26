@@ -36,6 +36,9 @@ DeliveryDetails.[DeliveryDate],
 DeliveryDetails.[Delivered by]
 FROM DeliveryDetails;
 
+DeliveryDetails.[DeliveryDate_Id],
+DeliveryDetails.[DeliveryDate], 
+
 
 SELECT Customers.CustomerFullName, Customers.CustomerDeliveryAddress, BillingDetails.BillDueOn, BillingDetails.BilledAmount, PaymentDetails.PaymentDate, PaymentDetails.PaidAmount, (BillingDetails.BilledAmount - PaymentDetails.PaidAmount ) AS AmountDue
 FROM (Customers INNER JOIN BillingDetails ON Customers.Customer_Id = BillingDetails.Customer_Id) LEFT JOIN PaymentDetails ON Customers.Customer_Id = PaymentDetails.Customer_Id;
@@ -43,3 +46,44 @@ FROM (Customers INNER JOIN BillingDetails ON Customers.Customer_Id = BillingDeta
 FROM (Customers 
 Customer_Id
 
+SELECT *
+FROM Customers
+WHERE (([Customers]![Customer_IsActive]=0));
+
+SELECT *
+FROM Customers
+WHERE (([Customers]![Customer_IsActive]<>0));
+
+
+SELECT Customers.DeliveryMaster_Id, Customers.DeliveryShortName, *
+FROM Customers
+WHERE (
+(([Customers]![Customer_IsActive])<>0)
+);
+
+SELECT Customers.DeliveryMaster_Id, Customers.DeliveryShortName, *
+FROM Customers
+WHERE (
+(([Customers]![Customer_IsActive])<>0 And ([Customers]![DeliveryMaster_Id]=2))
+);
+
+
+SELECT Customers.DeliveryMaster_Id, Customers.DeliveryShortName, Customers.Customer_Id, Customers.CustomerFullName, NOW as CurrentDateTime,
+DATE() AS CurrentDate
+, *
+FROM Customers
+WHERE ((([Customers]![Customer_IsActive])<>0) AND (([Customers]![DeliveryMaster_Id])=2));
+
+
+select * from [Date]
+where 
+(
+([Date]!TheDate = DATE())
+);
+
+
+SELECT Customers.Customer_Id, Customers.CustomerFullName
+FROM Customers
+where ( 
+(Customers.DeliveryMaster_Id = 2)
+);
