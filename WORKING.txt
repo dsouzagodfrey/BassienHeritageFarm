@@ -87,3 +87,29 @@ FROM Customers
 where ( 
 (Customers.DeliveryMaster_Id = 2)
 );
+
+SELECT Customers.Customer_Id, Customers.CustomerFullName
+FROM Customers
+WHERE (((Customers.DeliveryMaster_Id) In (1)));
+
+
+
+
+SELECT Customers.Customer_Id, Customers.CustomerFullName
+FROM Customers
+WHERE (((Customers.DeliveryMaster_Id) In (1,2)));
+
+
+SELECT [Customers].[Customer_Id], [Customers].[CustomerFullName] FROM Customers; 
+
+SELECT Customers.Customer_Id, Customers.CustomerFullName  FROM Customers  
+WHERE (
+((Customers.DeliveryMaster_Id) In (3))
+);
+
+
+SELECT [Customers].[Customer_Id], [Customers].[CustomerFullName] FROM Customers WHERE (( 1 = 2));
+
+
+
+SELECT [Customers].[Customer_Id], [Customers].[CustomerFullName] FROM Customers WHERE (( 1 =2 ));
