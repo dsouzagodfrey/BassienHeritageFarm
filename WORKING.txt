@@ -113,3 +113,23 @@ SELECT [Customers].[Customer_Id], [Customers].[CustomerFullName] FROM Customers 
 
 
 SELECT [Customers].[Customer_Id], [Customers].[CustomerFullName] FROM Customers WHERE (( 1 =2 ));
+
+DoCmd.RunSQL sql
+
+
+INSERT INTO DeliveryDetails ( DeliveryMaster_Id, DeliveryShortName, Customer_id, CustomerFullName, DeliveryDate, [Delivered by] )  
+SELECT Customers.DeliveryMaster_Id, Customers.DeliveryShortName, 2, "Colin Dabre", "09/05/2020","Mohan" 
+FROM Customers  WHERE (  (  ([Customers]![Customer_Id]) = 2 )  ); 
+
+INSERT INTO DeliveryDetails ( DeliveryMaster_Id, DeliveryShortName, Customer_id, CustomerFullName, DeliveryDate_Id, DeliveryDate, [Delivered by] )
+SELECT Customers.DeliveryMaster_Id, Customers.DeliveryShortName, 1 AS Expr1, "Grenold Dsouza" AS Expr2, 142 AS Expr3, "05/10/2020" AS Expr4, "Mohan" AS Expr5
+FROM Customers
+WHERE ((([Customers]![Customer_Id])=1));
+
+
+SELECT Date.[Date_Id], Date.[TheDate]
+FROM [Date]
+WHERE (((Date.[TheDate])=#1/1/2020#));
+
+
+
