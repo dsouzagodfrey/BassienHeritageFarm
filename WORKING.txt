@@ -110,7 +110,8 @@ WHERE (
 
 SELECT [Customers].[Customer_Id], [Customers].[CustomerFullName] FROM Customers WHERE (( 1 = 2));
 
-
+BillingStartDate
+BillingEndDate
 
 SELECT [Customers].[Customer_Id], [Customers].[CustomerFullName] FROM Customers WHERE (( 1 =2 ));
 
